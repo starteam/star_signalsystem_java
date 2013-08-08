@@ -54,6 +54,9 @@ public enum Icons
 	FLAG_DEFAULT("resources/flags/default.png"), //
 	FLAG_US("resources/flags/us.png"), //
 	FLAG_HT("resources/flags/ht.png"), //
+	FLAG_PT("resources/flags/pt.png"), //
+	FLAG_Trans("resources/flags/trans.png"), //
+	
 	; //
 
 	String resource;
