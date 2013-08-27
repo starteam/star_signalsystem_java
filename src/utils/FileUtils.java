@@ -62,7 +62,7 @@ public class FileUtils
 
 	public static byte[] deflate(byte[] bytes)
 	{
-		Deflater d = new Deflater();
+		Deflater d = new Deflater(Deflater.BEST_COMPRESSION);
 		d.setInput(bytes);
 		d.finish();
 		byte[] compressed = new byte[1024 * 1024 * 4];
@@ -78,8 +78,10 @@ public class FileUtils
 		Inflater inflater = new Inflater();
 		inflater.setInput(data);
 		inflater.finished();
-		byte[] ret = new byte[inflater.getRemaining()];
-		int len = inflater.inflate(ret);
+		byte[] decompressed = new byte[1024*1024*32];
+		int len = inflater.inflate(decompressed);		
+		byte[] ret = new byte[len];
+		System.arraycopy(decompressed, 0, ret, 0, len);		
 		return ret;
 	}
 }
